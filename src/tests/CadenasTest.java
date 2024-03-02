@@ -1,7 +1,6 @@
 package tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.stream.Stream;
 
@@ -15,7 +14,7 @@ import clases.Cadenas;
 class CadenasTest {
 
 	@ParameterizedTest
-	@MethodSource ("cuentaEspacio")
+	@MethodSource ("espacio")
 	void testCuentaEspacios(String frase,int espacios) {
 		Cadenas cad = new Cadenas(frase);
 		
@@ -26,25 +25,46 @@ class CadenasTest {
 	private static Stream<Arguments> espacio(){
 		return Stream.of(
 				Arguments.of("Hola a",1),
-				Arguments.of("Hola a todos",3)
-				
+				Arguments.of("Hola a todos",2),
+				Arguments.of("Hola",0)
+				);
+	}
+	
+
+	@ParameterizedTest
+	@MethodSource ("reves")
+	void testDelReves(String frase,String res) {
+		Cadenas cad = new Cadenas(frase);
+		
+		String result = cad.delReves();
+		
+		assertEquals(res, result);
+	}
+
+	private static Stream<Arguments> reves(){
+		return Stream.of(
+				Arguments.of("Hola","aloH"),
+				Arguments.of("Fotosintesis","sisetnisotoF")
 				);
 	}
 	
 	
-
+	@ParameterizedTest
+	@MethodSource ("contar")
+	void testContarPalabra(String frase,String palabra,int contador) {
+	Cadenas cad = new Cadenas(frase);
 	
+	int num = cad.contarPalabra(palabra);
 	
-	@Test
-	void testDelReves() {
-		fail("Not yet implemented");
+	assertEquals(contador, num);
+	
 	}
 
-	
-	
-	@Test
-	void testContarPalabra() {
-		fail("Not yet implemented");
+	private static Stream<Arguments> contar(){
+		return Stream.of(
+				Arguments.of("Hola a todos","Hola",1),
+				Arguments.of("Hola a todos, Hola a chicos","a",2)
+				);
 	}
-
+	
 }
