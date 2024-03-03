@@ -23,7 +23,9 @@ class NumerosTest {
 	}
 
 	private static Stream<Arguments> primo() {
-		return Stream.of(Arguments.of(1, false), 
+		return Stream.of(Arguments.of
+				
+				(1, false), 
 				
 				Arguments.of(4, false), 
 				
