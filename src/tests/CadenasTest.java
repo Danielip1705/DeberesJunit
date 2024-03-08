@@ -24,7 +24,7 @@ class CadenasTest {
 	}
 	private static Stream<Arguments> espacio(){
 		return Stream.of(
-				Arguments.of("Hola a",1),
+				Arguments.of("",0),
 				Arguments.of("Hola a todos",2),
 				Arguments.of("Hola",0)
 				);
@@ -51,19 +51,19 @@ class CadenasTest {
 	
 	@ParameterizedTest
 	@MethodSource ("contar")
-	void testContarPalabra(String frase,String palabra,int contador) {
+	void testContarPalabra(String frase,String palabra,int expected) {
 	Cadenas cad = new Cadenas(frase);
 	
-	int num = cad.contarPalabra(palabra);
+	int result = cad.contarPalabra(palabra);
 	
-	assertEquals(contador, num);
+	assertEquals(expected, result);
 	
 	}
 
 	private static Stream<Arguments> contar(){
 		return Stream.of(
 				Arguments.of("Hola a todos","Hola",1),
-				Arguments.of("Hola a todos, Hola a chicos","a",2)
+				Arguments.of("Hola a todos","dani",0)
 				);
 	}
 	

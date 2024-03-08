@@ -12,7 +12,6 @@ public class Cadenas {
 	public int cuentaEspacios() {
 		
 		int espacios = 0;
-		
 		for(int i=0; i<frase.length(); i++) {
 			if(frase.charAt(i) == ' ') {
 				espacios++;

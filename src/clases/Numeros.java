@@ -10,7 +10,6 @@ public class Numeros {
 	public boolean esPrimo() {
 		boolean primo = true;
 		int div = 2;
-
 		if (numero == 1) {
 			primo = false;
 		} else {

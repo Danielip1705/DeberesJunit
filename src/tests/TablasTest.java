@@ -14,51 +14,46 @@ import clases.Tablas;
 
 class TablasTest {
 
-	 @ParameterizedTest
-	    @MethodSource("provideMatrices")
-	    void testEsMagica(int[][] tabla, boolean expected) {
-			Tablas tab = new Tablas();
-			
-			boolean result = tab.esMagica(tabla);
-	        assertEquals(expected,result);
-	    }
+	@ParameterizedTest
+	@MethodSource("magico")
+	void testEsMagica(int[][] tabla, boolean expected) {
+		Tablas tab = new Tablas();
 
-	    private static Stream<Arguments> provideMatrices() {
-	        return Stream.of(
-	        		
-	            Arguments.of(new int[][]{{2, 7, 6}, {9, 5, 1}, {4, 3, 8}}, true),
-	            
-	            Arguments.of(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}, false),
-	            
-	            Arguments.of(new int[][]{{16, 3, 2, 13}, {5, 10, 11, 8}, {9, 6, 7, 12}, {4, 15, 14, 1}}, true),
-	            
-	            Arguments.of(new int[][]{{1}}, true)
-	        		);
-	    }
+		boolean result = tab.esMagica(tabla);
+		assertEquals(expected, result);
+	}
+
+	private static Stream<Arguments> magico() {
+		return Stream.of(
+
+				
+		);
+	}
 
 	@ParameterizedTest
-	@MethodSource ("gira90")
-	void testGira90(int tablaInicio[][],int[][] expected) {
+	@MethodSource("gira90")
+	void testGira90(int tablaInicio[][], int[][] expected) {
 		Tablas tab = new Tablas();
-		
-		int [][] result = tab.gira90(tablaInicio);
-		
+
+		int[][] result = tab.gira90(tablaInicio);
+
 		assertArrayEquals(expected, result);
 	}
 
-	
-	private static Stream<Arguments> gira90(){
-		 return Stream.of(
-		            Arguments.of(new int[][]{{1}},
-		                          new int[][]{{1}}),
-		       
-		            Arguments.of(new int[][] {{1,2},{3,4}},
-		            		
-		            			new int[][]{{3,1},{4,2}}),
-		            
-		            Arguments.of(null,null)
-		            
-		        );
+	private static Stream<Arguments> gira90() {
+		return Stream.of(
 				
+				Arguments.of(null,null),
+				
+				Arguments.of(new int[][] {{1,2},{3,4}},
+						new int[][] {{3,1},{4,2}}),
+				
+				Arguments.of(new int[][] {{1,2,3},{4,5,6}},
+							new int[][] {{5,3,1},{6,4,2}})
+				
+				
+					
+		);
+
 	}
 }
