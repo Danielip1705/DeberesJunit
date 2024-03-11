@@ -25,7 +25,9 @@ class TablasTest {
 
 	private static Stream<Arguments> magico() {
 		return Stream.of(
-
+				Arguments.of(new int[][] { { 3, 5, 5 }, { 5, 3, 5 }, { 5, 5, 3 } },true),
+				Arguments.of(new int[][] {{1,1,1},{2,2,2},{3,3,3}},false),
+				Arguments.of(new int[][] {{1,2,3},{1,2,3},{1,2,3}},true)
 				
 		);
 	}
@@ -45,11 +47,10 @@ class TablasTest {
 				
 				Arguments.of(null,null),
 				
-				Arguments.of(new int[][] {{1,2},{3,4}},
-						new int[][] {{3,1},{4,2}}),
+				Arguments.of(new int[2][1],null),
 				
-				Arguments.of(new int[][] {{1,2,3},{4,5,6}},
-							new int[][] {{5,3,1},{6,4,2}})
+				Arguments.of(new int[][] {{1,2,3},{4,5,6},{7,8,9}},
+							new int[][] {{7,4,1},{8,5,2},{9,4,1}})
 				
 				
 					
